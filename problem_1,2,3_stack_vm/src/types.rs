@@ -12,6 +12,8 @@ pub enum Opcode {
     OpSubtract,
     OpMultiply,
     OpDivide,
+    OpStartLoop,
+    OpEndLoop(VariableNameType),
     OpReturnValue,
 }
 
