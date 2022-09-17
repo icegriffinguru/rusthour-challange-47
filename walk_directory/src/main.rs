@@ -1,12 +1,10 @@
 use walkdir::WalkDir;
 use std::fs::File;
-use std::io::{BufReader, BufRead};
+use std::io::{BufReader, BufRead, self, Write};
 
-fn visit_all_files_and_count_lines() {
-    for entry in WalkDir::new(".").into_iter().filter_map(|e| e.ok()) {
-        
+fn visit_all_files_and_count_lines() -> io::Result<()> {
+    for entry in WalkDir::new(".").into_iter().filter_map(|e| e.ok()) {        
         let file_path = entry.path();
-        // println!("{:?}", file_path);
 
         // if file name ends with ".txt"
         if file_path.to_str().unwrap().ends_with(".txt") {
@@ -17,12 +15,16 @@ fn visit_all_files_and_count_lines() {
                 cnt = cnt + 1;
             }
 
-            println!("File Path: {:?};\t\t\tNumber of Lines: {:?}", file_path.display(), cnt);
+            io::stdout().write_fmt(format_args!("File Path: {:?};\t\t\tNumber of Lines: {:?}\n", file_path.display(), cnt))?;
         }
     }
+
+    Ok(())
 }
 
-fn main() {
-    println!("--- Number of lines in all txt files ---");
-    visit_all_files_and_count_lines();
+fn main() -> io::Result<()>{
+    io::stdout().write_fmt(format_args!("--- Number of lines in all txt files ---\n"))?;
+    visit_all_files_and_count_lines()?;
+
+    Ok(())
 }
