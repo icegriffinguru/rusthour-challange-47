@@ -1,3 +1,3 @@
 fn main() {
-    println!("Hello, world!");
+    println!("Please run \'cargo test\' to check Stack VM interpreter.");
 }
