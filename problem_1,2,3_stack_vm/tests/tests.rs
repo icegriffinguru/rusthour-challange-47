@@ -6,6 +6,8 @@ mod interpret_tests {
     use super::*;
     use Opcode::*;
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // tests for Problem 1
     #[test]
     fn test_add() {
         let program = vec![
@@ -18,7 +20,7 @@ mod interpret_tests {
         assert_eq!(
             interpret(program),
             3,
-            "result of add operation is incorrect"
+            "result is incorrect"
         );
     }
 
@@ -40,7 +42,7 @@ mod interpret_tests {
         assert_eq!(
             interpret(program),
             25,
-            "result of add operation is incorrect"
+            "result is incorrect"
         );
     }
 
@@ -62,7 +64,11 @@ mod interpret_tests {
         assert_eq!(
             interpret(program),
             4,
-            "result of add operation is incorrect"
+            "result is incorrect"
         );
     }
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // tests for Problem 2
 }
