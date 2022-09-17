@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 pub type OperandType = i64;
 pub type VariableNameType = char;
 
@@ -13,6 +15,7 @@ pub enum Opcode {
     OpReturnValue,
 }
 
+// stack implmentation
 pub struct Stack(pub Vec<OperandType>);
 impl Stack {
     pub fn push(&mut self, v: OperandType) {
@@ -24,4 +27,8 @@ impl Stack {
     }
 }
 
+// register value of all variables into HashMap for easy retrieving
+pub type VariableRegistry = HashMap<VariableNameType, OperandType>;
+
+// set of instructions
 pub type Program = Vec<Opcode>;

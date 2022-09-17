@@ -1,7 +1,8 @@
 use crate::types::*;
 
-pub fn interpret<'a>(program: Program) -> OperandType {
+pub fn interpret(program: Program) -> OperandType {
     let mut stack = Stack(Vec::new());
+    let mut variable_registry = VariableRegistry::new();
 
     for instruction in program {
         match instruction {
@@ -9,8 +10,13 @@ pub fn interpret<'a>(program: Program) -> OperandType {
                 stack.push(v);
             },
             Opcode::OpReadVar(vn) => {
+                match variable_registry.get(&vn) {
+                    Option::Some(v) => stack.push(*v),
+                    Option::None => panic!("a given variable name does not exist in VariableRegistry"),
+                }
             },
             Opcode::OpWriteVar(vn) => {
+                variable_registry.insert(vn, stack.pop());
             },
             Opcode::OpAdd => {
                 let b = stack.pop();
