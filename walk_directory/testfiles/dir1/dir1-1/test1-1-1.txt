@@ -1,0 +1,12 @@
+SEND_CHANNEL:
+
+Pops the channel and a value from the stack and sends the value on the channel using a blocking send
+
+RECV_CHANNEL:
+Pops the channel from the stack receives a value from the channel(this may block), and push the resulting value back onto the stack
+
+SPAWN:
+Pop two functions from the stack and spawn them as concurrent tasks
+
+
+Describe in a few sentences how each bytecode instruction could be interpreted, and how your interpreter or language runtime could deal with the blocking nature of the send and the receive instructions.
