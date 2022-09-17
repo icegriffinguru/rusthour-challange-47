@@ -1,4 +1,4 @@
-# RustHour 2022 Challenge 47 - Rust Part (1,2,3)
+# RustHour 2022 Challenge 47 - Rust Part
 
 ## Problem 1
 
